@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { Music, Settings, Gamepad2, Trophy, Map, Paintbrush, ChevronRight } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
+import { GameCanvas } from "../components/GameCanvas";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const menuItems = [
   {
@@ -38,6 +40,11 @@ const recommendedMaps = [
 
 export default function MainMenu() {
   const navigate = useNavigate();
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  if (isPlaying) {
+    return <GameCanvas onExit={() => setIsPlaying(false)} />;
+  }
 
   return (
     <div
@@ -123,7 +130,13 @@ export default function MainMenu() {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
-              onClick={() => navigate(item.path)}
+              onClick={() => {
+                if (item.title === "开始游戏") {
+                  setIsPlaying(true);
+                  return;
+                }
+                navigate(item.path);
+              }}
             >
               <item.icon size={24} />
               <span className="flex-1 text-left">{item.title}</span>
