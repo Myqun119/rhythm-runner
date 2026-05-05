@@ -1,0 +1,6 @@
+.rw-app { min-height: 100vh; background: linear-gradient(to bottom, #FFF9E6, #E6F9F7); font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto; color: #1f2937; }
+.rw-topnav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 8px 12px; display: flex; gap: 12px; align-items: center; position: sticky; top: 0; z-index: 10; }
+.rw-section { padding: 12px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.rw-btn { background: #4ECDC4; color:white; border:none; padding:8px 12px; border-radius:6px; }
+.rw-chip { display:inline-flex; align-items:center; padding:6px 12px; border-radius:999px; background:#f3f4f6; }
+.rw-grid { overflow:auto; border:1px solid #ddd; border-radius:6px; padding:8px; background:#fff; }

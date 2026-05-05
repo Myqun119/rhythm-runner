@@ -1,0 +1,27 @@
+/* CSS variables for music select visuals */
+:root {
+  /* Border used to indicate selected item, 0.5mm, 80% opacity yellow */
+  --music-selected-border: 0.5mm solid rgba(255, 217, 102, 0.8);
+  --bg-grad: linear-gradient(135deg, #FFF9E6 0%, #FFF2D3 25%, #D8F0F0 60%, #CDEDEB 80%, #EDECF0 100%);
+  --theme-yellow: #FFD966;
+  --theme-teal: #4ECDC4;
+}
+
+/* Apply a subtle border to the selected music item */
+.music-item-selected {
+  border: var(--music-selected-border);
+  border-radius: 1rem; /* slightly larger rounding for emphasis */
+}
+
+/* Card-like hover glow to enhance cartoon feel */
+.music-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 1.25rem; /* larger radius for a friendly card look */
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.music-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px rgba(0,0,0,0.14);
+}
