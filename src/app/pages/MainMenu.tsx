@@ -22,7 +22,6 @@ const menuItems = [
     title: "地图工坊",
     icon: Map,
     color: "#FFB7B2",
-    path: "/workshop",
   },
   {
     title: "我的创作",
@@ -133,6 +132,9 @@ export default function MainMenu() {
               onClick={() => {
                 if (item.title === "开始游戏") {
                   setIsPlaying(true);
+                  return;
+                }
+                if (item.title === "地图工坊") {
                   return;
                 }
                 navigate(item.path);
