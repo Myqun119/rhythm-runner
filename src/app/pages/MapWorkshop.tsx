@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router";
-import RhythmRunnerApp from "../../../rhythmrunner/src/App";
+import RhythmRunnerApp from "../../../rhythmGame/src/App";
 
 export default function MapWorkshop() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function MapWorkshop() {
         <ArrowLeft size={20} className="text-[#4ECDC4]" />
       </motion.button>
 
-      <div className="rhythmrunner-host relative z-10 h-full w-full overflow-auto pt-16">
+      <div className="rhythmgame-host relative z-10 h-full w-full overflow-auto pt-16">
         <RhythmRunnerApp />
       </div>
     </div>

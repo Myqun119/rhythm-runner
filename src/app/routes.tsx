@@ -9,6 +9,7 @@ import Leaderboard from "./pages/Leaderboard";
 import MapWorkshop from "./pages/MapWorkshop";
 import MapDetail from "./pages/MapDetail";
 import MapEditor from "./pages/MapEditor";
+import CreateMapChoice from "./pages/CreateMapChoice";
 import GameOver from "./pages/GameOver";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
   {
     path: "/editor",
     Component: MapEditor,
+  },
+  {
+    path: "/profile/new-map",
+    Component: CreateMapChoice,
   },
   {
     path: "/game-over",

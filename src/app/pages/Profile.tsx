@@ -138,9 +138,8 @@ export default function Profile() {
             transition={{ delay: 0.2 }}
           >
             <button
-              className={`flex-1 py-2 rounded-full text-sm transition-all ${
-                activeTab === "achievements" ? "text-white" : "text-gray-600"
-              }`}
+              className={`flex-1 py-2 rounded-full text-sm transition-all ${activeTab === "achievements" ? "text-white" : "text-gray-600"
+                }`}
               style={{
                 backgroundColor: activeTab === "achievements" ? "#FFD966" : "white",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
@@ -150,9 +149,8 @@ export default function Profile() {
               我的战绩
             </button>
             <button
-              className={`flex-1 py-2 rounded-full text-sm transition-all ${
-                activeTab === "creations" ? "text-white" : "text-gray-600"
-              }`}
+              className={`flex-1 py-2 rounded-full text-sm transition-all ${activeTab === "creations" ? "text-white" : "text-gray-600"
+                }`}
               style={{
                 backgroundColor: activeTab === "creations" ? "#4ECDC4" : "white",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
@@ -162,9 +160,8 @@ export default function Profile() {
               我的创作
             </button>
             <button
-              className={`flex-1 py-2 rounded-full text-sm transition-all ${
-                activeTab === "favorites" ? "text-white" : "text-gray-600"
-              }`}
+              className={`flex-1 py-2 rounded-full text-sm transition-all ${activeTab === "favorites" ? "text-white" : "text-gray-600"
+                }`}
               style={{
                 backgroundColor: activeTab === "favorites" ? "#FFB7B2" : "white",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
@@ -286,7 +283,7 @@ export default function Profile() {
                 backgroundColor: "#FFD966",
                 boxShadow: "0 6px 20px rgba(255, 217, 102, 0.5)",
               }}
-              onClick={() => navigate("/editor")}
+              onClick={() => navigate("/profile/new-map")}
             >
               <Plus size={20} />
               <span>创建新地图</span>
