@@ -1,9 +1,7 @@
 import { motion } from "motion/react";
 import { Music, Settings, Gamepad2, Trophy, Map, Paintbrush, ChevronRight } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
-import { GameCanvas } from "../components/GameCanvas";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 
 const menuItems = [
   {
@@ -22,6 +20,7 @@ const menuItems = [
     title: "地图工坊",
     icon: Map,
     color: "#FFB7B2",
+    path: "/workshop",
   },
   {
     title: "我的创作",
@@ -39,11 +38,6 @@ const recommendedMaps = [
 
 export default function MainMenu() {
   const navigate = useNavigate();
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  if (isPlaying) {
-    return <GameCanvas onExit={() => setIsPlaying(false)} />;
-  }
 
   return (
     <div
@@ -130,13 +124,6 @@ export default function MainMenu() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
               onClick={() => {
-                if (item.title === "开始游戏") {
-                  setIsPlaying(true);
-                  return;
-                }
-                if (item.title === "地图工坊") {
-                  return;
-                }
                 navigate(item.path);
               }}
             >

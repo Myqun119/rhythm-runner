@@ -1,0 +1,57 @@
+/* rhythm1-style game shell */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FFD966 0%, #4ECDC4 100%);
+}
+
+.menu-panel {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 48px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.game-title {
+    font-size: 48px;
+    color: #FF9F4A;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 #FFD966;
+}
+
+.difficulty-selector {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.difficulty-selector select {
+    margin-left: 12px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 24px;
+    border: 2px solid #4ECDC4;
+    background: white;
+    cursor: pointer;
+}
+
+.start-button {
+    margin-top: 20px;
+    padding: 14px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #FFD966, #FF9F4A);
+    border: none;
+    border-radius: 60px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}

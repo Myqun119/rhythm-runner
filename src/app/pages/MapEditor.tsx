@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Save, Upload, Music, Play } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
-import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { useState, useEffect } from "react";
+import { getCurrentUser, saveMap, getMapById } from "../../utils/db";
 
 const obstacles = [
   { id: 1, name: "跳跃", color: "#4ECDC4", icon: "🦘" },
@@ -12,10 +13,26 @@ const obstacles = [
 
 export default function MapEditor() {
   const navigate = useNavigate();
+  const user = getCurrentUser();
+  const { id } = useParams();
   const [selectedObstacle, setSelectedObstacle] = useState(1);
   const [grid, setGrid] = useState<(number | null)[][]>(
     Array(10).fill(null).map(() => Array(8).fill(null))
   );
+  const [mapName, setMapName] = useState("我的新地图");
+
+  useEffect(() => {
+    const loadMap = async () => {
+      if (id) {
+        const map = await getMapById(id);
+        if (map) {
+          setMapName(map.name);
+          setGrid(map.data);
+        }
+      }
+    };
+    loadMap();
+  }, [id]);
 
   const handleCellClick = (row: number, col: number) => {
     const newGrid = [...grid];
@@ -25,6 +42,38 @@ export default function MapEditor() {
 
   const getObstacleById = (id: number | null) => {
     return obstacles.find((o) => o.id === id);
+  };
+
+  const handleSave = async () => {
+    if (!user) {
+      alert("请先登录！");
+      navigate("/login");
+      return;
+    }
+
+    const res = await saveMap({ name: mapName, data: grid }, id);
+    if (res.success) {
+      alert(res.msg);
+      navigate("/profile");
+    } else {
+      alert(res.msg);
+    }
+  };
+
+  const handlePublish = async () => {
+    if (!user) {
+      alert("请先登录！");
+      navigate("/login");
+      return;
+    }
+
+    const res = await saveMap({ name: mapName, data: grid, publish: true }, id);
+    if (res.success) {
+      alert(res.msg);
+      navigate("/workshop");
+    } else {
+      alert(res.msg);
+    }
   };
 
   return (
@@ -71,6 +120,7 @@ export default function MapEditor() {
                 color: "white",
                 boxShadow: "0 4px 12px rgba(78, 205, 196, 0.3)",
               }}
+              onClick={handleSave}
             >
               <Save size={16} />
               <span className="text-sm">保存</span>
@@ -82,12 +132,28 @@ export default function MapEditor() {
                 color: "white",
                 boxShadow: "0 4px 12px rgba(255, 217, 102, 0.3)",
               }}
+              onClick={handlePublish}
             >
               <Upload size={16} />
               <span className="text-sm">发布</span>
             </button>
           </motion.div>
         </div>
+
+        <motion.div
+          className="px-6 mb-2"
+          initial={{ y: -10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+        >
+          <input
+            value={mapName}
+            onChange={(e) => setMapName(e.target.value)}
+            placeholder="输入地图名称"
+            className="w-full px-4 py-2 rounded-lg border-none shadow-sm"
+            style={{ backgroundColor: "white" }}
+          />
+        </motion.div>
 
         {/* 音乐选择 */}
         <motion.div
@@ -185,9 +251,8 @@ export default function MapEditor() {
               {obstacles.map((obstacle) => (
                 <button
                   key={obstacle.id}
-                  className={`w-full aspect-square rounded-xl flex flex-col items-center justify-center gap-1 transition-all ${
-                    selectedObstacle === obstacle.id ? "ring-4" : ""
-                  }`}
+                  className={`w-full aspect-square rounded-xl flex flex-col items-center justify-center gap-1 transition-all ${selectedObstacle === obstacle.id ? "ring-4" : ""
+                    }`}
                   style={{
                     backgroundColor: obstacle.color + "40",
                     ringColor: selectedObstacle === obstacle.id ? obstacle.color : "transparent",

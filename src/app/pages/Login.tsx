@@ -2,9 +2,30 @@ import { motion } from "motion/react";
 import { Music, User, Lock } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+import { loginUser, syncFavorites } from "../../utils/db";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    if (!username || !password) {
+      alert("请输入账号和密码！");
+      return;
+    }
+
+    const res = await loginUser(username, password);
+    if (!res.success) {
+      alert(res.msg);
+      return;
+    }
+
+    await syncFavorites();
+    alert("登录成功！欢迎回来：" + res.user.nickname);
+    navigate("/menu");
+  };
 
   return (
     <div
@@ -59,6 +80,8 @@ export default function Login() {
               type="text"
               placeholder="请输入账号"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
@@ -76,6 +99,8 @@ export default function Login() {
               type="password"
               placeholder="请输入密码"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </motion.div>
@@ -92,7 +117,7 @@ export default function Login() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          onClick={() => navigate("/menu")}
+          onClick={handleLogin}
         >
           登录
         </motion.button>

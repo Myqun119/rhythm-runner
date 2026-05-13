@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
-import { ArrowLeft, Download, Star, User, Music, Clock, MessageCircle } from "lucide-react";
+import { ArrowLeft, Download, Star, User, Music, Clock, MessageCircle, Heart } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
 import { useNavigate, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { getMapById, updateMapDownloads, getCurrentUser, syncFavorites } from "../../utils/db";
 
 const comments = [
   {
@@ -30,6 +32,79 @@ const comments = [
 export default function MapDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [map, setMap] = useState<any>(null);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [favoritesCount, setFavoritesCount] = useState(0);
+  const user = getCurrentUser();
+
+  useEffect(() => {
+    const loadMap = async () => {
+      if (!id) return;
+      const data = await getMapById(id);
+      if (data) setMap(data);
+    };
+    loadMap();
+  }, [id]);
+
+  useEffect(() => {
+    const loadFavoriteInfo = async () => {
+      if (!id) return;
+
+      try {
+        const countRes = await fetch(`http://localhost:3001/api/maps/${id}/favorites`);
+        const countData = await countRes.json();
+        setFavoritesCount(countData.favoritesCount || 0);
+      } catch (error) {
+        console.error("获取收藏数失败:", error);
+      }
+
+      if (user) {
+        try {
+          const favRes = await fetch(`http://localhost:3001/api/favorites/${user.userId}`);
+          const favorites = await favRes.json();
+          setIsFavorited(favorites.includes(id));
+        } catch (error) {
+          console.error("获取收藏状态失败:", error);
+        }
+      }
+    };
+
+    loadFavoriteInfo();
+  }, [id, user]);
+
+  const handleToggleFavorite = async () => {
+    if (!user) {
+      alert("请先登录");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      if (isFavorited) {
+        await fetch(`http://localhost:3001/api/maps/${id}/unfavorite`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: user.userId }),
+        });
+        setIsFavorited(false);
+        setFavoritesCount((prev) => Math.max(prev - 1, 0));
+      } else {
+        await fetch(`http://localhost:3001/api/maps/${id}/favorite`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: user.userId }),
+        });
+        setIsFavorited(true);
+        setFavoritesCount((prev) => prev + 1);
+      }
+
+      await syncFavorites();
+    } catch (error) {
+      console.error("收藏操作失败:", error);
+    }
+  };
+
+  if (!map) return null;
 
   return (
     <div
@@ -70,9 +145,9 @@ export default function MapDetail() {
         <div className="flex-1 overflow-y-auto px-6 pb-32">
           {/* 封面大图 */}
           <motion.div
-            className="w-full h-48 rounded-3xl mb-6 flex items-center justify-center"
+            className="w-full h-48 rounded-3xl mb-6 flex items-center justify-center relative"
             style={{
-              background: "linear-gradient(135deg, #FFD966, #4ECDC4)",
+              background: `linear-gradient(135deg, ${map.color || "#FFD966"}, #4ECDC4)`,
               boxShadow: "0 8px 24px rgba(255, 217, 102, 0.3)",
             }}
             initial={{ scale: 0.9, opacity: 0 }}
@@ -80,6 +155,15 @@ export default function MapDetail() {
             transition={{ delay: 0.2 }}
           >
             <span className="text-6xl">🎵</span>
+            <button
+              onClick={handleToggleFavorite}
+              className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center shadow-md"
+            >
+              <Heart
+                size={20}
+                className={isFavorited ? "text-red-500 fill-red-500" : "text-gray-400"}
+              />
+            </button>
           </motion.div>
 
           {/* 地图信息 */}
@@ -89,21 +173,25 @@ export default function MapDetail() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="text-2xl mb-2">彩虹跑道</h1>
+            <h1 className="text-2xl mb-2">{map.name}</h1>
             <div className="flex items-center gap-2 text-gray-600 mb-3">
               <User size={16} />
-              <span className="text-sm">设计师小王</span>
+              <span className="text-sm">{map.creator}</span>
             </div>
 
             {/* 统计数据 */}
             <div className="flex gap-6 mb-4">
               <div className="flex items-center gap-2">
                 <Download size={18} className="text-[#4ECDC4]" />
-                <span className="text-sm">1,250次下载</span>
+                <span className="text-sm">{map.downloads || 0}次下载</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Heart size={18} className="text-red-400" />
+                <span className="text-sm">{favoritesCount}收藏</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star size={18} className="text-[#FFD966]" fill="#FFD966" />
-                <span className="text-sm">4.8分</span>
+                <span className="text-sm">{map.rating || 0}分</span>
               </div>
             </div>
 
@@ -112,7 +200,7 @@ export default function MapDetail() {
               className="inline-block px-4 py-2 rounded-full text-sm text-white"
               style={{ backgroundColor: "#A8E6CF" }}
             >
-              简单
+              自定义地图
             </div>
           </motion.div>
 
@@ -131,7 +219,7 @@ export default function MapDetail() {
               地图描述
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              这是一张充满活力的彩虹主题地图！跟随音乐的节奏，在色彩斑斓的跑道上奔跑跳跃，感受音乐与运动的完美结合。适合新手玩家，节奏明快，障碍物设置合理。
+              这是一张由玩家原创的自定义节奏地图，跟随音乐的节奏闯关挑战！
             </p>
           </motion.div>
 
@@ -253,7 +341,10 @@ export default function MapDetail() {
                 backgroundColor: "#FFD966",
                 boxShadow: "0 6px 20px rgba(255, 217, 102, 0.5)",
               }}
-              onClick={() => navigate("/game-over")}
+              onClick={async () => {
+                await updateMapDownloads(id!);
+                navigate("/game-mode");
+              }}
             >
               立即体验
             </button>
@@ -263,6 +354,15 @@ export default function MapDetail() {
                 backgroundColor: "transparent",
                 border: "2px solid #4ECDC4",
                 color: "#4ECDC4",
+              }}
+              onClick={async () => {
+                const result = await updateMapDownloads(id!);
+                if (result.success) {
+                  alert(`地图 "${map.name}" 下载成功！`);
+                  navigate("/game-mode");
+                } else {
+                  alert("下载失败");
+                }
               }}
             >
               下载地图

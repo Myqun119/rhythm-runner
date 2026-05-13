@@ -2,9 +2,35 @@ import { motion } from "motion/react";
 import { User, Mail, Lock, Check } from "lucide-react";
 import { BackgroundDecorations } from "../components/Decorations";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+import { registerUser } from "../../utils/db";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [nickname, setNickname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPwd, setConfirmPwd] = useState("");
+
+  const handleRegister = async () => {
+    if (!nickname || !username || !password || !confirmPwd) {
+      alert("请填写所有字段！");
+      return;
+    }
+
+    if (password !== confirmPwd) {
+      alert("两次密码不一致！");
+      return;
+    }
+
+    const res = await registerUser(username, password, nickname);
+    if (res.success) {
+      alert("注册成功！请登录");
+      navigate("/login");
+    } else {
+      alert(res.msg);
+    }
+  };
 
   return (
     <div
@@ -51,6 +77,8 @@ export default function Register() {
               type="text"
               placeholder="请输入昵称"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
             />
           </div>
 
@@ -68,6 +96,8 @@ export default function Register() {
               type="text"
               placeholder="请输入邮箱或手机号"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
@@ -85,6 +115,8 @@ export default function Register() {
               type="password"
               placeholder="请输入密码"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -102,6 +134,8 @@ export default function Register() {
               type="password"
               placeholder="请确认密码"
               className="flex-1 bg-transparent outline-none placeholder:text-gray-400"
+              value={confirmPwd}
+              onChange={(e) => setConfirmPwd(e.target.value)}
             />
           </div>
         </motion.div>
@@ -118,7 +152,7 @@ export default function Register() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          onClick={() => navigate("/menu")}
+          onClick={handleRegister}
         >
           注册
         </motion.button>

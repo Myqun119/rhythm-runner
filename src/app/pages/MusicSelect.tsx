@@ -93,9 +93,8 @@ export default function MusicSelect() {
             transition={{ delay: 0.1, duration: 0.5 }}
           >
             <button
-              className={`flex-1 py-2 rounded-full transition-all ${
-                activeTab === "local" ? "text-white" : "text-gray-600"
-              }`}
+              className={`flex-1 py-2 rounded-full transition-all ${activeTab === "local" ? "text-white" : "text-gray-600"
+                }`}
               style={{
                 backgroundColor: activeTab === "local" ? "#FFD966" : "white",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
@@ -105,9 +104,8 @@ export default function MusicSelect() {
               本地音乐
             </button>
             <button
-              className={`flex-1 py-2 rounded-full transition-all ${
-                activeTab === "online" ? "text-white" : "text-gray-600"
-              }`}
+              className={`flex-1 py-2 rounded-full transition-all ${activeTab === "online" ? "text-white" : "text-gray-600"
+                }`}
               style={{
                 backgroundColor: activeTab === "online" ? "#4ECDC4" : "white",
                 boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
@@ -125,9 +123,8 @@ export default function MusicSelect() {
             {musicList.map((music, index) => (
               <motion.div
                 key={music.id}
-                className={`p-4 rounded-2xl cursor-pointer transition-all ${
-                  selectedMusic === music.id ? "ring-4 ring-offset-2" : ""
-                }`}
+                className={`p-4 rounded-2xl cursor-pointer transition-all ${selectedMusic === music.id ? "ring-4 ring-offset-2" : ""
+                  }`}
                 style={{
                   backgroundColor: "white",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
@@ -194,7 +191,7 @@ export default function MusicSelect() {
               backgroundColor: "#FFD966",
               boxShadow: "0 6px 20px rgba(255, 217, 102, 0.5)",
             }}
-            onClick={() => navigate("/game-over")}
+            onClick={() => navigate("/game")}
           >
             开始游戏
           </button>

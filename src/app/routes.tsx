@@ -10,6 +10,8 @@ import MapWorkshop from "./pages/MapWorkshop";
 import MapDetail from "./pages/MapDetail";
 import MapEditor from "./pages/MapEditor";
 import CreateMapChoice from "./pages/CreateMapChoice";
+import RhythmGame from "./pages/RhythmGame";
+import Game from "./pages/Game";
 import GameOver from "./pages/GameOver";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
@@ -52,12 +54,20 @@ export const router = createBrowserRouter([
     Component: MapDetail,
   },
   {
-    path: "/editor",
+    path: "/editor/:id?",
     Component: MapEditor,
+  },
+  {
+    path: "/game",
+    Component: Game,
   },
   {
     path: "/profile/new-map",
     Component: CreateMapChoice,
+  },
+  {
+    path: "/rhythm-game",
+    Component: RhythmGame,
   },
   {
     path: "/game-over",

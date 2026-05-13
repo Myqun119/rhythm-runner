@@ -1,0 +1,829 @@
+{
+  "users": [
+    {
+      "userId": "1776155800631",
+      "username": "1",
+      "password": "1",
+      "nickname": "wxz",
+      "createdAt": 1776155800631
+    },
+    {
+      "userId": "1776169232466",
+      "username": "2",
+      "password": "1",
+      "nickname": "zsw",
+      "createdAt": 1776169232466
+    },
+    {
+      "userId": "1776752152588",
+      "username": "3",
+      "password": "1",
+      "nickname": "ww",
+      "createdAt": 1776752152588
+    }
+  ],
+  "maps": [
+    {
+      "id": "1776169361063",
+      "name": "1",
+      "data": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "createdAt": 1776169361063
+    },
+    {
+      "id": "1776169621467",
+      "name": "8",
+      "data": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": true,
+      "creator": "wxz",
+      "creatorId": "1776155800631",
+      "downloads": 2,
+      "rating": 0,
+      "color": "#FFB7B2",
+      "createdAt": 1776169621467,
+      "favoritesCount": 3
+    },
+    {
+      "id": "1776170293098",
+      "name": "2",
+      "data": [
+        [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": true,
+      "creator": "zsw",
+      "creatorId": "1776169232466",
+      "downloads": 4,
+      "rating": 0,
+      "color": "#9B59B6",
+      "createdAt": 1776170293098,
+      "favoritesCount": 0
+    },
+    {
+      "id": "1776751936429",
+      "name": "wxz的地图",
+      "data": [
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": false,
+      "creator": "wxz",
+      "creatorId": "1776155800631",
+      "downloads": 0,
+      "rating": 0,
+      "color": "#A8E6CF",
+      "createdAt": 1776751936429
+    },
+    {
+      "id": "1776751955387",
+      "name": "3",
+      "data": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": true,
+      "creator": "wxz",
+      "creatorId": "1776155800631",
+      "downloads": 0,
+      "rating": 0,
+      "color": "#A8E6CF",
+      "createdAt": 1776751955387,
+      "favoritesCount": 1
+    },
+    {
+      "id": "1776751968817",
+      "name": "4",
+      "data": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": false,
+      "creator": "wxz",
+      "creatorId": "1776155800631",
+      "downloads": 0,
+      "rating": 0,
+      "color": "#D4A5A5",
+      "createdAt": 1776751968817
+    },
+    {
+      "id": "1778566350217",
+      "name": "我的新地图2",
+      "data": [
+        [
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "publish": true,
+      "creator": "wxz",
+      "creatorId": "1776155800631",
+      "downloads": 0,
+      "rating": 0,
+      "color": "#1ABC9C",
+      "createdAt": 1778566350217,
+      "favoritesCount": 0
+    }
+  ],
+  "comments": [],
+  "favorites": [
+    {
+      "userId": "1776169232466",
+      "mapId": "1776751955387",
+      "createdAt": 1776756982762
+    },
+    {
+      "userId": "1776169232466",
+      "mapId": "1776169621467",
+      "createdAt": 1778566451627
+    },
+    {
+      "userId": "1776752152588",
+      "mapId": "1776169621467",
+      "createdAt": 1778566706344
+    },
+    {
+      "userId": "1776155800631",
+      "mapId": "1776169621467",
+      "createdAt": 1778638282684
+    }
+  ]
+}

@@ -97,7 +97,7 @@ export default function CreateMapChoice() {
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.3 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => navigate("/workshop")}
+                        onClick={() => navigate("/rhythm-game")}
                     >
                         <div className="flex items-center justify-between gap-4">
                             <div className="flex items-center gap-4">
